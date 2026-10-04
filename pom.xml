@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
             <start-class>com.example.demo.DemoApplication</start-class>
-		<java.version>27</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
