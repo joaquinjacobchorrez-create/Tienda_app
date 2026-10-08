@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Sistema de Gestión de Tienda</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://jsdelivr.net" rel="stylesheet">
     </head>
     <body class="bg-light p-4">
         <div class="container">
@@ -53,7 +53,8 @@
         </div>
 
         <script>
-            const API_URL = "http://localhost:8080/api/productos";
+            // CORREGIDO: Ahora apunta a tu servidor real en internet alojado en Render
+            const API_URL = "https://onrender.com";
 
             async function cargarProductos() {
                 try {
@@ -83,16 +84,20 @@
                     stock: parseInt(document.getElementById("stock").value)
                 };
 
-                await fetch(API_URL, {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify(producto)
-                });
-
-                document.getElementById("formProducto").reset();
-                cargarProductos();
+                try {
+                    await fetch(API_URL, {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify(producto)
+                    });
+                    document.getElementById("formProducto").reset();
+                    cargarProductos();
+                } catch (error) {
+                    console.error("Error al guardar producto:", error);
+                }
             });
 
+            // Cargar la lista automáticamente al abrir la página
             cargarProductos();
         </script>
     </body>
