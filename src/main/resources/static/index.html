@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Sistema de Gestión de Tienda</title>
-        <link href="https://jsdelivr.net" rel="stylesheet">
+        <!-- Cambiado a cdnjs para evitar bloqueos de red -->
+        <link href="https://cloudflare.com" rel="stylesheet">
     </head>
     <body class="bg-light p-4">
         <div class="container">
@@ -53,7 +54,7 @@
         </div>
 
         <script>
-            // CORREGIDO: Ahora apunta a tu servidor real en internet alojado en Render
+            // URL corregida con tu subdominio de Render para evitar fallos de CORS
             const API_URL = "https://onrender.com";
 
             async function cargarProductos() {
@@ -97,7 +98,6 @@
                 }
             });
 
-            // Cargar la lista automáticamente al abrir la página
             cargarProductos();
         </script>
     </body>
